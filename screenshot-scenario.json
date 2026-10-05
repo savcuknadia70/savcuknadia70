@@ -1,0 +1,59 @@
+{
+  "referenceResolution": [1242, 2688],
+  "notes": "tapFrac values are the real RectTransform centres resolved over the 1242x2688 reference canvas (anchorMin/Max + anchoredPosition + sizeDelta, through every nested prefab instance), then mapped through the SafeArea/AspecterSA letterbox: a UI rect at panel fraction u sits at 0.013042 + u*0.973917 of the screen from the bottom, so tapFracY = 1 - that. Width maps straight across (x/1242). Recomputed against the current scenes - the previous file predated the pop/HUD re-layout. The runner waits out the app's own loader before step 1, so step 1 lands on the menu rather than the splash, and the PLAY tap uses waitLoader because Menu -> Game is a scene change with its own loader. Step 3 picks CLIMB, not the already-selected RUSH: re-selecting the default repaints nothing and would have produced a near-duplicate of step 2, which the duplicate-frame gate rejects. The run ends on the pause pop (SETTINGS.POPS.PAUSE, 6), which is reachable on demand; WIN/LOSE depend on where the sweeping module happens to be and cannot be guaranteed inside a fixed tap budget - two drops can never end a run (a complete miss needs |delta| >= the module width, which is wider than the whole sweep span, and the first 3 placements are grace-protected anyway).",
+  "steps": [
+    {
+      "wait": 3,
+      "shot": "01_menu",
+      "note": "hero tower, BEST HEIGHT / BEST STREAK chips, objective line, PLAY and SECTORS"
+    },
+    {
+      "tapFrac": [0.5, 0.8457],
+      "label": "SECTORS",
+      "wait": 1.6,
+      "shot": "02_sectors",
+      "note": "ModeButton rect 361,326 520x128 -> opens the ModeSheet (scrim + SELECT SECTOR card) over the menu"
+    },
+    {
+      "tapFrac": [0.5, 0.4326],
+      "label": "CLIMB",
+      "wait": 1.4,
+      "shot": "03_sector_selected",
+      "note": "ModeCardClimb rect 101,1398 1040x264 -> violet frame + 1.04 punch moves to CLIMB, RUSH drops back to idle, objective line updates"
+    },
+    {
+      "tapFrac": [0.5, 0.7283],
+      "label": "BACK",
+      "wait": 1.5,
+      "note": "SheetBack rect 401,652 440x124 -> closes the sheet so PLAY is tappable again"
+    },
+    {
+      "tapFrac": [0.5, 0.7581],
+      "label": "PLAY",
+      "waitLoader": true,
+      "shot": "04_game_idle",
+      "note": "PLAY rect 225,548 792x168 -> SCENE_1; base plinth down, module sweeping the traverse, HUD and altimeter"
+    },
+    {
+      "tapFrac": [0.5, 0.875],
+      "label": "DROP",
+      "wait": 2.4,
+      "shot": "05_game_locked",
+      "note": "DropButton rect 261,221 720x176 -> module locks, the overhang is cut and falls away as a coral shard"
+    },
+    {
+      "tapFrac": [0.5, 0.875],
+      "label": "DROP",
+      "wait": 2.4,
+      "shot": "06_game_stacking",
+      "note": "second module on the stack, HEIGHT and the altimeter advanced, tower narrower"
+    },
+    {
+      "tapFrac": [0.8478, 0.0957],
+      "label": "PAUSE",
+      "wait": 2.2,
+      "shot": "07_pause_pop",
+      "note": "PauseButton rect 987,2394 132x132 -> POPS.PAUSE (6) over the standing structure, showing the live HEIGHT of this run"
+    }
+  ]
+}

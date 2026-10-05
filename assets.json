@@ -1,0 +1,162 @@
+{
+  "style": "glossy stylised game art, clean bold edges, neon night-construction palette, soft rim light, 3D-ish render, never a photo",
+  "palette": [
+    "#17182A",
+    "#1E2142",
+    "#5A62D9",
+    "#39C2CA",
+    "#F3C449",
+    "#F6F0E3",
+    "#E95A62",
+    "#2A2D52",
+    "#8E96F0",
+    "#0E0F1C"
+  ],
+  "notes": "A neon night construction site: a tower of glowing modules stacked against a dark indigo skyline. Five sprites carry a nine-slice border in their .meta (sprite_module_core, sprite_module_accent, sprite_module_gold, sprite_base_plinth, sprite_hud_strip), so their prompts ask for a uniform rim and a flat, quiet centre that survives being stretched to any width - the module width really does change every time the player cuts the tower. A nine-slice border is only valid while BOTH fixed edges fit inside the drawn size: a module is 42px tall on screen, so its vertical border must stay well under 21px per edge or Unity renders the slab as a sliver. The two skyline sprites and sprite_segment_fill carry no border and are stretched whole, so their art must FILL its canvas and match the aspect written into the scene (1024x384 and 128x64) - a square icon-shaped render there becomes a giant rounded square across the play field. Direction is declared explicitly only where the code never mirrors the art: sprite_wind_arrow points RIGHT and sprite_icon_back points LEFT; everything else is symmetric and must not be mirrored. Sprite prompts do not argue about the backdrop colour because the pipeline cuts the background away. No prompt contains the app name and no sprite carries lettering of any kind - splash and menu branding is the abstract mark (sprite_mark_badge) plus stacked modules, never a word.",
+  "assets": [
+    {
+      "name": "bg_main",
+      "type": "bg",
+      "transparent": false,
+      "target": "Assets/Art/Textures/_BASE/Backgrounds/BG_main.png",
+      "prompt": "glossy stylised game art, clean bold edges, neon night palette, a night city skyline seen from a construction site, deep navy #17182A sky fading to indigo near the horizon, distant tower silhouettes speckled with tiny cyan and indigo window lights, a thin low haze along the rooftops, the centre of the frame kept calm and uncluttered as a safe area for a hero mark and buttons, vertical 9:19.5 portrait composition, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "menu and splash backdrop"
+    },
+    {
+      "name": "bg_game",
+      "type": "bg",
+      "transparent": false,
+      "target": "Assets/Art/Textures/_BASE/Backgrounds/BG_game.png",
+      "prompt": "glossy stylised game art, clean bold edges, a night sky above a construction site, smooth navy to indigo vertical gradient, a very faint survey grid of thin indigo lines, no buildings and no objects, deliberately empty and very low contrast across the whole frame so a bright HUD and a stack of glowing blocks read on top of it, vertical 9:19.5 portrait composition, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "gameplay backdrop"
+    },
+    {
+      "name": "sprite_module_core",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_module_core.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single horizontal building module block seen flat from the FRONT facing the camera, wide rectangular slab, indigo #5A62D9 body with a glowing cyan #39C2CA strip along its top edge, a uniform rim all the way around and a flat quiet centre so it can be stretched to any width, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "stacked module, nine-slice (border 24/10/24/10)"
+    },
+    {
+      "name": "sprite_module_accent",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_module_accent.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single horizontal building module block seen flat from the FRONT facing the camera, wide rectangular slab, teal #39C2CA body with a glowing white strip along its top edge, a uniform rim all the way around and a flat quiet centre so it can be stretched to any width, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "alternating module colour, nine-slice (border 24/10/24/10)"
+    },
+    {
+      "name": "sprite_module_gold",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_module_gold.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single horizontal building module block seen flat from the FRONT facing the camera, wide rectangular slab, gold #F3C449 body with a bright warm rim light along its top edge, a uniform rim all the way around and a flat quiet centre so it can be stretched to any width, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "perfect-joint module, nine-slice (border 24/10/24/10)"
+    },
+    {
+      "name": "sprite_base_plinth",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_base_plinth.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single wide foundation plinth slab seen flat from the FRONT facing the camera, dark navy #1E2142 body with a thin cyan #39C2CA edge strip along the top, heavier and broader than a building block, a uniform rim all the way around and a flat quiet centre so it can be stretched to any width, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "tower base row, nine-slice (border 32/8/32/8)"
+    },
+    {
+      "name": "sprite_beacon_final",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_beacon_final.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single glowing beacon crown block, gold #F3C449 body with a radiant cyan #39C2CA light core glowing out of its top, compact and roughly square, bold readable silhouette, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "final victory block and icon hero object"
+    },
+    {
+      "name": "sprite_slice_shard",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_slice_shard.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single thin broken slab shard tilted at an angle, one end cut clean and the other end jagged, coral #E95A62 body with a darker underside, bold readable silhouette, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "the piece cut off a misaligned module"
+    },
+    {
+      "name": "sprite_spark",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_spark.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single four-point spark burst, perfectly symmetric, gold #F3C449 fading to white at the core, small and compact, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "perfect-joint burst"
+    },
+    {
+      "name": "sprite_wind_arrow",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_wind_arrow.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single thick chevron arrow with its head pointing RIGHT, cyan #39C2CA body with a bright white core, blunt rounded ends, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "wind indicator, head RIGHT - never mirrored"
+    },
+    {
+      "name": "sprite_icon_pause",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_icon_pause.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single pause icon made of two thick vertical rounded bars side by side, cyan #39C2CA, symmetric, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "pause button icon"
+    },
+    {
+      "name": "sprite_icon_back",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_icon_back.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single back arrow icon with its head pointing LEFT, thick rounded stroke, cyan #39C2CA, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "back button icon, head LEFT - never mirrored"
+    },
+    {
+      "name": "sprite_icon_close",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_icon_close.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single close icon, a thick diagonal cross of two rounded strokes, cream #F6F0E3, symmetric, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "pop close button icon"
+    },
+    {
+      "name": "sprite_hud_strip",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_hud_strip.png",
+      "prompt": "flat vector UI plate, one single rounded rectangle filling the WHOLE 256x128 frame edge to edge with only a 2px margin, solid dark navy #1E2142 fill, a 4px glowing cyan #39C2CA outline, corner radius 42px, nothing else in the frame, no icon, no text, no glow halo, not a photo",
+      "role": "HUD/menu plate, nine-slice (border 44/44/44/44) - body must fill the canvas or the sliced centre squashes it"
+    },
+    {
+      "name": "sprite_segment_fill",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_segment_fill.png",
+      "prompt": "flat vector UI pill, one single horizontal capsule filling the WHOLE 128x64 frame edge to edge, solid cyan #39C2CA fill with a pale 3px rim, fully rounded ends, nothing else in the frame, no text, no glow halo, not a photo",
+      "role": "altimeter segment - stretched whole, no nine-slice border"
+    },
+    {
+      "name": "sprite_skyline_far",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_skyline_far.png",
+      "prompt": "flat vector silhouette, a WIDE SHORT horizontal strip 1024x384, a single row of plain dark indigo #2A2D52 rectangular tower silhouettes of varying heights standing shoulder to shoulder along the BOTTOM edge and running off both the left and right edges, absolutely no detail or shading inside the shapes, the whole upper half of the frame completely empty and transparent, not an icon, no rounded frame, no card, no glow, no background panel, no text, not a photo",
+      "role": "far parallax band - wide 1024x384 strip, drawn procedurally"
+    },
+    {
+      "name": "sprite_skyline_near",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_skyline_near.png",
+      "prompt": "flat vector silhouette, a WIDE SHORT horizontal strip 1024x384, a single row of chunky plain #1E2142 rectangular tower silhouettes of varying heights standing along the BOTTOM edge on a solid ground strip and running off both the left and right edges, a few tiny cyan #39C2CA window dots, no shading inside the shapes, the whole upper half of the frame completely empty and transparent, not an icon, no rounded frame, no card, no glow, no background panel, no text, not a photo",
+      "role": "near parallax band - wide 1024x384 strip, drawn procedurally"
+    },
+    {
+      "name": "sprite_mark_badge",
+      "type": "sprite",
+      "transparent": true,
+      "target": "Assets/Art/Sprites/sprite_mark_badge.png",
+      "prompt": "glossy stylised game art, clean bold edges, one single abstract emblem badge, a rounded dark navy #17182A shield-less disc with a glowing cyan #39C2CA ring around it and a soft indigo inner glow, completely blank in the middle, purely a frame with no symbol and absolutely no lettering inside, one single object, centred, isolated, no text, no letters, no logos, no watermark, not a photo, not photorealistic",
+      "role": "abstract splash and menu mark - carries no name"
+    }
+  ]
+}

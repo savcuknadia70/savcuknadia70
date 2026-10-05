@@ -1,0 +1,1 @@
+{"reason":"autofix","files":10,"note":"Fix on MainMenu, the play button (load scene game scene) have no overriden text, and text is just BASE_BUTTON, also something with game, sprites or what is it (white squares rounded) too big, maybe th","at_epoch":1790873563}

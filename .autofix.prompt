@@ -1,0 +1,23 @@
+Почини исходники проекта TowerRShStack (платформа: unity, тикет ANDROID-3713). Раунд 1 из 3.
+
+Проект: C:/AndroidWorkspace/projects/TowerRShStack
+Правила генерации (обязательны): C:/AndroidWorkspace/CLAUDE-unity.md
+Полный лог пайплайна: C:/AndroidWorkspace/projects/TowerRShStack/.unity-pipeline.log
+
+ГЛАВНОЕ — жалоба человека, она важнее находок гейтов (он видел это на устройстве):
+Fix on MainMenu, the play button (load scene game scene) have no overriden text, and text is just BASE_BUTTON, also something with game, sprites or what is it (white squares rounded) too big, maybe they need to be sliced rendered pr what
+Найди, КАКОЙ объект/код рисует то, на что жалуются, и почини причину. Скриншоты
+прошлой сборки: C:/AndroidWorkspace/projects/TowerRShStack/prompts/screenshots (могут быть старше кода).
+
+После пересборки жалоба НЕ решена. Сверка свежих скриншотов: NOT_RESOLVED: 02_modes.png и 07_pause_pop.png — кнопка PLAY из MainMenu рисуется поверх поп-апа SELECT SECTOR и перекрывает кнопку BACK (видна только верхняя половина букв); 05_game_locked.png — кнопки Menu/Retry выходят за рамку панели, капсула «100» налезает на текст HEIGHT 0/6 / PERFECT 0, глиф крестика смазан; 03_mode_selected.png и 04_game_idle.png — модули перечёркивают HUD-строку SUPPORTS 3 / 3. Скриншоты новой сборки: C:/AndroidWorkspace/projects/TowerRShStack/prompts/screenshots.
+
+Требования:
+  * Меняй ТОЛЬКО файлы проекта. Шаблонные файлы не трогай (правило §00). Чинить через
+    свои объекты/override (C.2, C.18), а не правкой базовых prefab шаблона.
+  * Правь причину, а не симптом. НЕ ослабляй и не обходи проверки, ничего не удаляй
+    ради прохождения гейта.
+  * ПЕРЕД ОКОНЧАНИЕМ сам прогони ВСЕ гейты пайплайна и добейся exit 0:
+        bash C:/AndroidWorkspace/scripts/lib/unity-gates.sh C:/AndroidWorkspace/projects/TowerRShStack
+    Если гейт падает — чини и прогоняй снова. Гейт с пометкой soft допустим, HARD — нет.
+  * Сборку не запускай и пайплайн не трогай — пересборку и сверку скриншотов сделает автофикс.
+  * В конце ответа одной строкой: что именно изменил (файлы и суть).

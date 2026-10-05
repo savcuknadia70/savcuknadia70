@@ -1,0 +1,8 @@
+Проверка результата. Человек жаловался на приложение TowerRShStack:
+«Fix on MainMenu, the play button (load scene game scene) have no overriden text, and text is just BASE_BUTTON, also something with game, sprites or what is it (white squares rounded) too big, maybe they need to be sliced rendered pr what»
+
+После правки приложение пересобрано и снято заново: C:/AndroidWorkspace/projects/TowerRShStack/prompts/screenshots/*.png
+Открой и посмотри КАЖДЫЙ скриншот. Ответь, решена ли жалоба на этих кадрах.
+Ничего не правь. Последней строкой ответа выведи ровно одно из:
+VERDICT: RESOLVED
+VERDICT: NOT_RESOLVED: <что именно на каком скриншоте всё ещё не так>
